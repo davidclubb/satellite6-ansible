@@ -1,0 +1,190 @@
+---
+
+##########################################
+# variables for ec2-create-instance.yaml #
+##########################################
+#############################################
+
+#####################################
+# variables for sat6-install.yaml   #
+#####################################
+
+
+# If proxy is to be used, fill in the proxy hostname and portname separatly
+# The playbooks will pick up if these are "not empty"
+# Important, only FQDN, no protocol
+proxy_hostname: proxy.example.com
+#VDCIi03Proxy.oneadr.net
+proxy_port: 8080
+proxy_username: svc
+proxy_password: svcpass
+
+# REMOVE
+# Satellite Subscription Pool ID
+# You can retrive this by either going to the Customer Portal and list info about the subscription
+# or, you can do a:
+# subscription-manager list --available | less
+# on a registered host and then search for Satellite
+
+# Create a Satellite activation key on the Customer Portal
+# 
+rhn_activation_key: "act-satellite"
+rhn_organization_id: "XXXXXXX"
+
+# Satellite FQDN
+# Will be used by the route53 module to add a DNS entry in AWS (route53)
+# aswell as setting the hostname on the provisioned host
+
+satellite_hostname: satellite.example.com
+satellite_ip: #.#.#.#
+
+# name of the organization that will be configured
+# This can#t easily be changed afterwards
+organization: "MyOrg"
+
+# one initial location (more can be added later)
+location: "FirstLocation"
+
+# initial password for the adminstrator account (can be changed later)
+admin_password: "bigSecret"
+
+# firewalld ports to open
+# firewalld or iptables enabled
+open_ports:
+- 53/tcp
+- 53/udp
+- 67/udp
+- 69/udp
+- 80/tcp
+- 443/tcp
+- 5647/tcp
+- 8000/tcp
+- 8140/tcp
+- 9090/tcp
+
+
+#####################################
+# variables for sat6-configure.yaml #
+#####################################
+
+
+# Additional Locations
+# i.e. locations that should be added
+# in addition to the Initial Location
+# "location: "
+additional_locations:
+- HH
+
+# add path to where you put your manifest. this file have to be put here manually before running sat6-configure.yaml
+manifest: files/manifest.zip
+
+# rhel_subscription_name 
+rhel_subscription_name: "Red Hat Enterprise Linux Server, Premium (Physical or Virtual Nodes)" 
+openshift_subscription_name: "Red Hat OpenShift Container Platform, Premium, 2-Core"
+
+# add a list of what RHEL repositories you want to sync
+# specify product and repository name, architecture (x86_64 or i386 etc) and optionally release version for repositories that require that
+# to list products and fetching their name
+# hammer product list
+# hammer product info --id 17 
+
+
+# We've refactored this and put into the redhat_repositories.yaml instead
+# 
+
+# specify a list of what custom products and underlying repositories you want to create
+# the playbook will then create products, repositories, GPG keys accordingly
+# this is an example on how to setup EPEL 7
+custom_products:
+- name: Extra Packages for Enterprise Linux
+  repositories:
+  - name: EPEL7
+    url: https://dl.fedoraproject.org/pub/epel/7/x86_64/
+    #gpg_key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
+    gpg_key: RPM-GPG-KEY-EPEL-7
+    content_type: yum
+
+  - name: EPEL6
+    url: https://dl.fedoraproject.org/pub/epel/6/x86_64/
+    #gpg_key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6
+    gpg_key: RPM-GPG-KEY-EPEL-6
+    content_type: yum
+
+- name: Zabbix
+  repositories:
+  - name: Zabbix RHEL7 3.4
+    url: https://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/
+    gpg_key: https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
+    content_type: yum
+
+ 
+
+# specify if you want to set download policy to "immediate" or "on_demand" for all repositories.
+# "on_demand" aka "lazy sync" make sure that the repo data for all repositories are synced to the Satellite, but the actual RPMs are only downloaded when a server request them.
+# this saves a lot of disk space on the Satellite, but can make updates slower.
+
+# NOTE: The download policy will be set to on_demand in the initial phase Configuration of Satellite
+# This to save time during the playbook run and only sync the metadata and
+# so we can create the CV's and AK's etc.without having to wait for all the Content to sync down (A lot of content..)
+# The policy will be set after the configuration is done, and will be set for the Capsule content first. 
+download_policy: immediate
+
+# specify the lifecycle environments you want to create. each one need a name and the name of the previous environment (first one is always Library) 
+
+lifecycle_environments:
+
+#MAIN 
+- previous: Library
+  name: DEV
+
+- previous: DEV
+  name: TEST
+
+- previous: TEST
+  name: PREPROD
+
+- previous: PREPROD
+  name: PROD
+
+# OpenShift
+- previous: Library
+  name: OpenShift-TEST
+
+- previous: OpenShift-TEST
+  name: OpenShift-PROD
+
+
+## subscriptions
+## to findout which subs to include here do:
+## hammer subscription list
+## and take the NAME
+activation_keys:
+- name: AK-Capsule
+  cv: CV-RHEL7
+  lifecycle_environments:
+  - PROD
+  subscriptions:
+  - Red Hat Satellite Capsule Server 
+  
+
+
+  
+# provisioning templates
+# list the wanted provisioning templates here
+# the rest will be disassociated
+provisioning_templates:
+ - Kickstart default finish
+ - Kickstart default iPXE
+ - Kickstart default PXELinux
+ - Kickstart default user data
+ - kickstart_networking_setup
+ - Satellite Kickstart Default
+ - Satellite Kickstart Default Finish
+ - Satellite Kickstart Default User Data
+ - subscription_manager_registration
+ - http_proxy
+ - idm_register
+ - PXELinux chain iPXE
+ - remote_execution_ssh_keys
+ - redhat_register
+

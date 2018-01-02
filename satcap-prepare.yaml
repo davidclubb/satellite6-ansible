@@ -1,0 +1,213 @@
+---
+- block: 
+  - name: add proxy to rhsm
+    lineinfile:
+      path: /etc/rhsm/rhsm.conf
+      line: 'proxy_hostname = {{ proxy_hostname }}'
+      regexp: '^proxy_hostname \='
+      state: present
+    
+  - name: add proxy port to rhsm
+    lineinfile:
+      path: /etc/rhsm/rhsm.conf
+      line: 'proxy_port = {{ proxy_port }}'
+      regexp: '^proxy_port \='
+      state: present
+
+  - name: add proxy user to rhsm
+    lineinfile:
+      path: /etc/rhsm/rhsm.conf
+      line: 'proxy_user = {{ proxy_username }}'
+      regexp: '^proxy_user \='
+      state: present
+
+  - name: add proxy pwd to rhsm
+    lineinfile:
+      path: /etc/rhsm/rhsm.conf
+      line: 'proxy_password = {{ proxy_password }}'
+      regexp: '^proxy_password \='
+      state: present
+
+  - name: ensure subscription-manager is present
+    yum:
+      name: subscription-manager
+      state: latest
+
+  - name: check subman status
+    command: subscription-manager status
+    register: subman_status
+    ignore_errors: yes
+
+  - name: subscribe to access.redhat.com, will take a while..
+    command: subscription-manager register --activationkey "{{ rhn_activation_key }}" --org "{{ rhn_organization_id }}"
+    when: '"Overall Status: Unknown" in subman_status.stdout and "Status: Invalid" in subman_status.stdout'
+
+  - name: disable all repositories
+    command: subscription-manager repos --disable '*'
+
+  - name: enable satellite 6 repositories
+    command: subscription-manager repos --enable rhel-7-server-rpms --enable rhel-server-rhscl-7-rpms --enable rhel-7-server-satellite-6.2-rpms
+  tags: subman
+  when: "'satellite' in group_names"
+
+- block:
+   - name: add satellite to /etc/hosts if the Capsule is in Green/DMZ
+     lineinfile:
+       path: /etc/hosts
+       line: "{{ satellite_ip }} {{ satellite_hostname }}"
+     when: "'green_prod' in group_names or 'green_nonprod' in group_names"
+
+   - name: ensure subscription-manager is present
+     yum:
+       name: subscription-manager
+       state: latest
+
+   - name: check subman status
+     command: subscription-manager status
+     register: subman_status
+     ignore_errors: yes
+
+   - name: Print subman_status
+     debug:
+       msg: "{{ subman_status }}"
+
+   - name: Print satellite fqdn
+     debug:
+       msg: "{{ satellite_hostname }}"
+
+   - name: install satellite katello ca consumer
+     yum:
+       name: "http://{{ satellite_hostname }}/pub/katello-ca-consumer-latest.noarch.rpm"
+       state: present
+     when: '"Overall Status: Unknown" in subman_status.stdout or "Overall Status: Invalid" in subman_status.stdout'
+
+   - name: register with satellite
+     command: "subscription-manager register --username admin --password {{ admin_password }} --environment Library --force"
+     when: '"Overall Status: Unknown" in subman_status.stdout'
+     register: subman_reg
+     failed_when: subman_reg.rc != 0 and 'This system has already been registere' not in subman_reg.stderr
+
+   - name: attach capsule sku
+     shell: |
+       subscription-manager attach --pool=$(subscription-manager list --available --matches 'Red Hat Satellite Capsule 6 (For Transition Only)' --pool-only)
+     when: '"Overall Status: Unknown" in subman_status.stdout or "Overall Status: Invalid" in subman_status.stdout'
+
+   - name: disable all repos 
+     command: subscription-manager repos --disable '*'
+
+   - name: enable Capsule repositories
+     command: subscription-manager repos --enable rhel-7-server-rpms --enable rhel-server-rhscl-7-rpms --enable rhel-7-server-satellite-tools-6.2-rpms --enable rhel-7-server-satellite-capsule-6.2-rpms
+
+
+  tags: subman
+  when: "'capsules' in group_names"
+
+- block:
+  - name: ensure systemid is removed
+    file:
+      path: /etc/sysconfig/rhn/systemid
+      state: absent
+ 
+  - name: ensure up2date is removed
+    file:
+      path: /etc/sysconfig/rhn/up2date
+      state: absent
+ 
+  - name: ensure that no RHN or Satellite 5 packages are installed
+    yum:
+      name: "{{ item }}"
+      state: absent
+    with_items:
+    - osa-common.noarch
+    - osad.noarch
+    - rhn-check.noarch
+    - rhn-client-tools.noarch
+    - rhn-setup.noarch
+    - rhncfg.noarch
+    - rhncfg-actions.noarch
+    - rhnlib.noarch
+    - rhncfg-client.noarch
+    - rhnsd.x86_64
+    - spacewalk-usix.noarch
+    - spacewalk-backend-libs.noarch
+    - spacewalk-oscap.noarch
+    - yum-rhn-plugin.noarch
+    - jabberpy.noarch
+  tags: unregister_sat5
+
+- name: ensure Puppetlabs repo is disabled
+  yum_repository:
+    name: pe_repo
+    state: absent
+
+#- name: ensure internal repo is disabled
+#  yum_repository:
+#    name: internal
+#    state: absent
+
+- name: yum-clean-metadata
+  command: yum clean metadata
+
+- block:
+  - name: install ntp
+    yum:
+      name: chrony
+      state: latest
+
+  - name: make sure chrony runs
+    service:
+      state: started
+      name: chronyd
+
+
+      #
+      #  - name: make sure firewalld is enabled and running
+      #    service:
+      #      name: firewalld
+      #      state: started
+      #      enabled: true
+      #
+      #  - name: open firewalld ports
+      #    firewalld:
+      #      immediate: yes
+      #      permanent: yes
+      #      state: enabled
+      #      port: "{{ item }}"
+      #    with_items: "{{ open_ports }}" 
+
+  - name: make sure selinux is in enforcing mode
+    selinux:
+      policy: targeted
+      state: enforcing
+
+# these tasks verify that DNS is configured properly
+# if any of these tasks fail, the installation won't complete successully
+  - name: set hostname
+    command: "hostnamectl set-hostname {{ ansible_fqdn }}"
+
+  - name: verify localhost resolution
+    command: "ping -c1 localhost"
+    changed_when: false
+
+  - name: verify hostname resolution 
+    command: "ping -c1 {{ ansible_hostname }}"
+    changed_when: false
+
+  - name: verify FQDN resolution
+    command: "ping -c1 {{ ansible_fqdn }}"
+    changed_when: false
+
+  tags: checks
+
+
+- name: ensure puppet agent is absent
+  yum:
+    name: puppet
+    state: absent
+
+- name: perform yum update
+  yum:
+    name: "*"
+    state: latest
+    update_cache: yes
+

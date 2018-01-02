@@ -1,0 +1,96 @@
+
+  - name: install katello-agent
+    yum:
+      name: katello-agent
+      state: latest
+  - name: remove any traces of previous installation
+    command: yum remove -y satellite-capsule --setopt='clean_requirements_on_remove=1' 
+
+  - name: remove any traces of previous installation
+    shell: /bin/rm -rf /etc/foreman-installer/scenarios.d/*
+
+  - name: do a ls for debug
+    command: ls -la /etc/foreman-installer/
+    ignore_errors: true
+
+  - name: install capsule packages
+    yum:
+      name: satellite-capsule
+      state: latest 
+
+
+  - name: create certificate folder
+    file:
+      path: /tmp/capsule_certificates
+      state: directory
+      mode: 0777
+    delegate_to: "{{ item }}"
+    with_items:
+    - "{{ satellite_hostname }}"
+    - "{{ ansible_fqdn }}"
+
+  - name: whoami
+    command: "sudo su - -c whoami"
+    delegate_to: "{{ satellite_hostname }}"
+      
+  - name: generate capsule certificates on satellite
+    shell: |
+      sudo su - -c '/sbin/capsule-certs-generate --capsule-fqdn {{ ansible_fqdn }} --certs-tar /tmp/capsule_certificates/{{ ansible_fqdn }}.tar --no-colors |  head -n -1 | tail -n 10'
+    register: certs_output
+    delegate_to: "{{ satellite_hostname }}"
+    ignore_errors: true
+
+  - fail:
+      msg: "The generation of Capsule certs and command Failed with following: {{ certs_output.stderr }}"
+    when: "'Something went wrong' in certs_output.stdout"
+
+  - name: loosen up the permissions on the tar file so that it can be overwritten if playbook runs again
+    shell: "sudo su - -c 'chmod 0777 /tmp/capsule_certificates/{{ ansible_fqdn }}.tar'"
+    delegate_to: "{{ satellite_hostname }}"
+
+  - set_fact:
+      #capsule_command: "{{ certs_output.stdout | replace('\n', '') | replace('\', '')}}"
+      capsule_command: "{{ certs_output.stdout }}"
+
+#  - name: prepare folder on ansible_control host
+#    file:
+#      path: "/tmp/{{ inventory_hostname }}"
+#      mode: 644
+#      state: directory
+#    connection: local
+  - name: clear any previous folder on the ansible control host
+    file:
+      path: "/tmp/{{ inventory_hostname }}"
+      state: absent
+    connection: local
+
+  - name: copy certificate tar file from satellite to ansible control host
+    fetch:
+      src: /tmp/capsule_certificates/{{ ansible_fqdn }}.tar
+      dest: /tmp/
+    delegate_to: "{{ satellite_hostname }}"
+
+  - name: loosen up the permissions on the tar file so that it can be overwritten if playbook runs again
+    file:
+      path: "/tmp/{{ inventory_hostname }}/tmp/capsule_certificates/{{ ansible_fqdn }}.tar"
+      mode: 777
+    delegate_to: "{{ satellite_hostname }}"
+
+  - name: copy certificate tar file from ansible control host to Capsule
+    copy:
+      dest: "/tmp/capsule_certificates/{{ ansible_fqdn }}.tar"
+      src: "/tmp/{{ inventory_hostname }}/tmp/capsule_certificates/{{ ansible_fqdn }}.tar"
+
+
+
+
+  - name: notify user
+    debug:
+      msg: run the satellite-installer command found in {{ playbook_dir }}/files/{{ ansible_fqdn }}.command on the Capsule server to finish the installation. after that, the capsule can be configured with capsule-configure.yaml
+
+  - name: run capsule install command
+    shell: "{{ capsule_command }}"
+    register: capsule-installer
+
+
+

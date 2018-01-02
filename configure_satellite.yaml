@@ -1,0 +1,14 @@
+---
+# Available tags:
+# - t products      : Run through the product setup     
+# - t content_views : Run through the creation of content views
+- hosts: satellite
+  vars_files:
+    - group_vars/satellite.yaml
+    - group_vars/redhat_repositories.yaml
+    - group_vars/content_views.yaml
+  gather_facts: False
+  tasks:
+    - include: sat-configure.yaml
+  tags: configuration
+

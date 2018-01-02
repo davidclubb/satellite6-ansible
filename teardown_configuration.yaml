@@ -1,0 +1,95 @@
+---
+- hosts: satellite
+  tasks:
+
+#    - name: create id list
+#      set_fact:
+#        id_list: "{{ lookup('sequence', 'start=1 count=50 format=%d', wantlist=True) }}"
+#  
+#  #{%for id in range(1,7)%} {{ id }} {%endfor%}"
+#    - name: print 7-1
+#      debug:
+#        msg: "{{ item }}"
+#      with_items: "{{ id_list | last }}"
+#      register: results
+#    until: results.rc = 0
+#
+#  - fail:
+#
+  - name: get current activation keys
+    shell: hammer --csv activation-key list | tail -n +2 | awk -F ',' '{print $2}'
+    register: current_activation_keys
+    changed_when: false
+    tags: activation_keys
+
+  - name: print aks
+    debug:
+      msg: "{{ current_activation_keys.stdout_lines }}"
+    tags: activation_keys
+
+  - name: remove all activation keys
+    command: hammer activation-key delete --name "{{ item }}"
+    with_items: "{{ current_activation_keys.stdout_lines }}"
+    tags: activation_keys
+
+  - name: get current content view versions
+    shell: hammer --csv content-view version list | tail -n +2 | awk -F ',' '{print $1}'
+    register: current_content_view_versions
+    changed_when: false
+    tags: content_views
+
+  - name: get current content_views
+    shell: hammer --csv content-view  list | tail -n +2 | awk -F ',' '{print $2}'
+    register: current_content_views
+    changed_when: false
+    tags: content_views
+
+  - name: get all lifecycle environments
+    shell: hammer --csv lifecycle-environment  list | tail -n +2 | awk -F ',' '{print $2}'
+    register: current_lifecycle_environments
+    changed_when: false
+
+  - name: get all lifecycle environments
+    shell: hammer --csv lifecycle-environment  list | tail -n +2  | awk -F ',' '{print $1}'
+    register: current_lifecycle_environments_ids
+    changed_when: false
+
+  - name: create le ordered list
+    set_fact: 
+      le_max_id: "{{ current_lifecycle_environments_ids.stdout_lines | max }}" 
+
+  - name: print LE ids
+    debug:
+      msg: "{{ item }}"
+    with_items: "{{ current_lifecycle_environments_ids.stdout_lines | max }}"
+
+  - name: print content_views
+    debug:
+      msg: "{{ current_content_views.stdout_lines }}"
+    tags: content_views
+
+  - name: remove content view from Lifecycle Environments.. bruteforce, will take some time and produce errors if the CV isn't associated with the LE. Ignoring errors
+    shell: hammer content-view remove-from-environment --name "{{ item.0 }}" --lifecycle-environment "{{ item.1 }}"
+    ignore_errors: true
+    when: "'Default Organization View' not in item.0"
+    with_nested:
+    - "{{ current_content_views.stdout_lines }}"
+    - "{{ current_lifecycle_environments.stdout_lines }}"
+    tags: content_views
+
+  - name: delete content Views
+    shell: hammer content-view delete --name "{{ item }}"
+    when: "'Default Organization View' not in item"
+    with_items: "{{ current_content_views.stdout_lines }}"
+    ignore_errors: true
+    tags: content_views
+
+  - name: create id list in reverse order
+    set_fact:
+      id_list: "{{ current_lifecycle_environments_ids.stdout_lines | sort(reverse=True)  }}"
+
+  - name: delete lifecycle envs
+    shell: hammer lifecycle-environment delete --id '{{ item }}'
+    with_items: "{{ id_list }}"
+    ignore_errors: true
+

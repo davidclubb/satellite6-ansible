@@ -1,0 +1,20 @@
+---
+ - hosts: satellite
+   vars_files:
+     -  "group_vars/satellite.yaml"
+   tasks:
+     - name: get all provisioning templates
+       shell: "hammer --csv template list --per-page 300 | tail -n +1 "
+       register: templates
+
+
+     - debug: 
+         msg: "{{ templates.stdout_lines }}"
+
+     - name: disassociate templates
+       command: "hammer template update --organization-ids ' ' --id {{ item.split(',')[0] }} --type {{ item.split(',')[2] }}"
+       when: "'{{ item.split(',')[1] }}' not in provisioning_templates"
+       with_items: 
+         - "{{ templates.stdout_lines }}"
+       ignore_errors: true
+

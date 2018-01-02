@@ -1,0 +1,230 @@
+---
+content_views:
+- name: CV-RHEL7
+  # rhel_major used for Activation Keys 
+  rhel_major: 7 
+  repos:
+  - repo_name: Red Hat Enterprise Linux 7 Server RPMs x86_64 7Server
+    product: Red Hat Enterprise Linux Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server Debug RPMs x86_64 7Server
+
+  - repo_name: Red Hat Satellite Tools 6.2 for RHEL 7 Server RPMs x86_64
+    product: Red Hat Enterprise Linux Server
+  - repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.4 
+    product: Red Hat Enterprise Linux Server
+
+  - repo_name: EPEL7 
+    product: Extra Packages for Enterprise Linux 
+
+  - product: dotNET on RHEL for RHEL Server
+    repo_name: dotNET on RHEL RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server
+  - product: dotNET on RHEL for RHEL Server
+    repo_name: dotNET on RHEL Debug RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server
+
+  - product: Red Hat Software Collections for RHEL Server
+    repo_name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server
+  - product: Red Hat Software Collections for RHEL Server
+    repo_name: Red Hat Software Collections Debug RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server
+
+  - product: Oracle Java for RHEL Server
+    repo_name: Red Hat Enterprise Linux 7 Server - Oracle Java RPMs x86_64 7Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server - Extras RPMs x86_64
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server - Extras Debug RPMs x86_64
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server - Optional RPMs x86_64 7Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server - Optional Debug RPMs x86_64 7Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server - RH Common RPMs x86_64 7Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server - RH Common Debug RPMs x86_64 7Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server - Supplementary RPMs x86_64 7Server
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server - Supplementary Debug RPMs x86_64 7Server
+  lifecycle_environments:
+  - DEV
+  - TEST
+  - PREPROD
+  - PROD
+
+- name: CV-RHEL7.2-EUS
+  rhel_major: 7
+  repos:
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.2
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support RPMs x86_64 7.2
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support Debug RPMs x86_64 7.2
+  - product: Oracle Java for RHEL Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Oracle Java RPMs x86_64 7.2
+  
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Optional RPMs x86_64 7.2
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Optional Debug RPMs x86_64 7.2
+  
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Supplementary RPMs x86_64 7.2
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Supplementary Debug RPMs x86_64 7.2
+  
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - RH Common RPMs x86_64 7.2
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - RH Common Debug RPMs x86_64 7.2
+  
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Satellite Tools 6.2 for RHEL 7 Server - EUS RPMs x86_64 7.2
+
+  - repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.2
+    product: Red Hat Enterprise Linux Server
+
+
+  - repo_name: EPEL7 
+    product: Extra Packages for Enterprise Linux 
+  lifecycle_environments:
+  - DEV
+  - TEST
+  - PREPROD
+  - PROD
+
+- name: CV-RHEL6
+  rhel_major: 6
+  repos:
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server Kickstart x86_64 6.9
+  - repo_name: Red Hat Enterprise Linux 6 Server RPMs x86_64 6Server
+    product: Red Hat Enterprise Linux Server
+
+  - repo_name: Red Hat Satellite Tools 6.2 for RHEL 6 Server RPMs x86_64
+    product: Red Hat Enterprise Linux Server
+
+  - repo_name: Red Hat Enterprise Linux 6 Server Kickstart x86_64 6.9 
+    product: Red Hat Enterprise Linux Server
+
+  - repo_name: EPEL6 
+    product: Extra Packages for Enterprise Linux 
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server - RH Common RPMs x86_64 6Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server - RH Common Debug RPMs x86_64 6Server
+
+  - product: Oracle Java for RHEL Server
+    repo_name: Red Hat Enterprise Linux 6 Server - Oracle Java RPMs x86_64 6Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server - Extras RPMs x86_64
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server - Extras Debug RPMs x86_64
+
+  - product: Red Hat Software Collections for RHEL Server
+    repo_name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 6 Server x86_64 6Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server - Optional RPMs x86_64 6Server
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server - Optional Debug RPMs x86_64 6Server
+
+  - product: Red Hat Developer Toolset for RHEL Server
+    repo_name: Red Hat Developer Toolset 2 RPMs for Red Hat Enterprise Linux 6 Server x86_64 6Server
+  - product: Red Hat Developer Toolset for RHEL Server
+    repo_name: Red Hat Developer Toolset 2 Debug RPMs for Red Hat Enterprise Linux 6 Server x86_64 6Server
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server - Supplementary RPMs x86_64 6Server
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server - Supplementary Debug RPMs x86_64 6Server
+
+  - product: Red Hat Enterprise Linux Scalable File System for RHEL Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux Scalable File System for RHEL 6 Server - Extended Update Support RPMs x86_64 6Server
+  lifecycle_environments:
+  - DEV
+  - TEST
+  - PREPROD
+  - PROD
+
+- name: CV-RHEL6.7-EUS
+  rhel_major: 6
+  repos:
+
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 6 Server Kickstart x86_64 6.7
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support RPMs x86_64 6.7
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support Debug RPMs x86_64 6.7
+  
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Optional RPMs x86_64 6.7
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Optional Debug RPMs x86_64 6.7
+  
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Supplementary RPMs x86_64 6.7
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Supplementary Debug RPMs x86_64 6.7
+  
+  - product: Oracle Java for RHEL Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Oracle Java RPMs x86_64 6.7
+  
+  - product: Red Hat Enterprise Linux Scalable File System for RHEL Server - Extended Update Support
+    repo_name: Red Hat Enterprise Linux Scalable File System for RHEL 6 Server - Extended Update Support RPMs x86_64 6.7
+  - product: Red Hat Enterprise Linux Server - Extended Update Support
+    repo_name: Red Hat Satellite Tools 6.2 for RHEL 6 Server - EUS RPMs x86_64 6.7
+  lifecycle_environments:
+  - DEV
+  - TEST
+  - PREPROD
+  - PROD
+  
+
+- name: CV-CAPSULE
+  rhel_major: 7
+  repos:
+  - repo_name: Red Hat Enterprise Linux 7 Server RPMs x86_64 7Server
+    product: Red Hat Enterprise Linux Server
+  - repo_name: Red Hat Satellite Tools 6.2 for RHEL 7 Server RPMs x86_64
+    product: Red Hat Enterprise Linux Server
+  - repo_name: Red Hat Satellite Capsule 6.2 for RHEL 7 Server RPMs x86_64
+    product: Red Hat Satellite Capsule
+  - product: Red Hat Software Collections for RHEL Server
+    repo_name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server 
+  - repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.4 
+    product: Red Hat Enterprise Linux Server
+  lifecycle_environments:
+  - PROD
+
+- name: CV-OpenShift-3.6
+  rhel_major: 7
+  repos:
+  - product: Red Hat OpenShift Container Platform
+    repo_name: Red Hat OpenShift Container Platform 3.6 RPMs x86_64
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server RPMs x86_64 7Server
+  - product: Red Hat Enterprise Linux Fast Datapath
+    repo_name: Red Hat Enterprise Linux Fast Datapath RHEL 7 Server RPMs x86_64 7Server
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Satellite Tools 6.2 for RHEL 7 Server RPMs x86_64
+  - product: Red Hat Software Collections for RHEL Server
+    repo_name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server
+  - product: Red Hat Enterprise Linux Server
+    repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.4
+  lifecycle_environments:
+  - OpenShift-TEST 
+  - OpenShift-PROD
+

@@ -1,0 +1,28 @@
+---
+# The just_created hostgroup is a temporary group, added in the 
+# ec2-create-instance play.
+# just_created won't be accessible after the play has finished
+# Instead you can create a host entry in the host file
+# and run the sat6-*-standalone.yaml playbooks
+# if you want to debug or rerun.
+
+- hosts: capsules
+  vars_files:
+    - group_vars/satellite.yaml
+  tasks:
+    - include: satcap-prepare.yaml
+
+- hosts: capsules
+  serial: 1
+  vars_files:
+    - group_vars/satellite.yaml
+  tasks:
+    - include: capsule-install.yaml
+  tags: install_capsule
+
+- hosts: capsules
+  vars_files:
+    - group_vars/satellite.yaml
+  tasks:
+    - include: capsule-configure.yaml
+  tags: configure_capsule

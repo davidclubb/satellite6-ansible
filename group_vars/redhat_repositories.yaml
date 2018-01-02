@@ -1,0 +1,681 @@
+---
+redhat_repositories:
+- product: Red Hat Software Collections for RHEL Server
+  repo_name: Red Hat Software Collections Debug RPMs for Red Hat Enterprise Linux
+    7 Server x86_64 7Server
+  repo: Red Hat Software Collections Debug RPMs for Red Hat Enterprise Linux 7 Server
+  product_id: 3
+  reposet_id: 2809
+  repo_label: rhel-server-rhscl-7-debug-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Software Collections for RHEL Server
+  repo_name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server
+    x86_64 7Server
+  repo: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server
+  product_id: 3
+  reposet_id: 2808
+  repo_label: rhel-server-rhscl-7-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Software Collections for RHEL Server
+  repo_name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 6 Server
+    x86_64 6Server
+  repo: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 6 Server
+  product_id: 3
+  reposet_id: 1997
+  repo_label: rhel-server-rhscl-6-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Satellite Capsule
+  repo_name: Red Hat Satellite Capsule 6.2 for RHEL 7 Server RPMs x86_64
+  repo: Red Hat Satellite Capsule 6.2 (for RHEL 7 Server) (RPMs)
+  product_id: 25
+  reposet_id: 4751
+  repo_label: rhel-7-server-satellite-capsule-6.2-rpms
+  basearch: x86_64
+- product: Red Hat OpenShift Container Platform
+  repo_name: Red Hat OpenShift Container Platform 3.6 RPMs x86_64
+  repo: Red Hat OpenShift Container Platform 3.6 (RPMs)
+  product_id: 33
+  reposet_id: 5880
+  repo_label: rhel-7-server-ose-3.6-rpms
+  basearch: x86_64
+- product: Red Hat OpenShift Container Platform
+  repo_name: Red Hat OpenShift Container Platform 3.5 RPMs x86_64
+  repo: Red Hat OpenShift Container Platform 3.5 (RPMs)
+  product_id: 33
+  reposet_id: 5801
+  repo_label: rhel-7-server-ose-3.5-rpms
+  basearch: x86_64
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Optional
+    RPMs x86_64 6.7
+  repo: Red Hat Enterprise Linux 6 Server - Extended Update Support - Optional (RPMs)
+  product_id: 10
+  reposet_id: 1283
+  repo_label: rhel-6-server-eus-optional-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Supplementary
+    Debug RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support - Supplementary
+    (Debug RPMs)
+  product_id: 10
+  reposet_id: 4103
+  repo_label: rhel-7-server-eus-supplementary-debuginfo
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Optional
+    RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support - Optional (RPMs)
+  product_id: 10
+  reposet_id: 4115
+  repo_label: rhel-7-server-eus-optional-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support RPMs x86_64
+    6.7
+  repo: Red Hat Enterprise Linux 6 Server - Extended Update Support (RPMs)
+  product_id: 10
+  reposet_id: 1285
+  repo_label: rhel-6-server-eus-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - RH Common
+    RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support - RH Common (RPMs)
+  product_id: 10
+  reposet_id: 4143
+  repo_label: rhel-7-server-eus-rh-common-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Supplementary
+    RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support - Supplementary
+    (RPMs)
+  product_id: 10
+  reposet_id: 4138
+  repo_label: rhel-7-server-eus-supplementary-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support Debug RPMs
+    x86_64 6.7
+  repo: Red Hat Enterprise Linux 6 Server - Extended Update Support (Debug RPMs)
+  product_id: 10
+  reposet_id: 1280
+  repo_label: rhel-6-server-eus-debug-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support Debug RPMs
+    x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support (Debug RPMs)
+  product_id: 10
+  reposet_id: 4112
+  repo_label: rhel-7-server-eus-debug-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Optional
+    Debug RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support - Optional (Debug
+    RPMs)
+  product_id: 10
+  reposet_id: 4114
+  repo_label: rhel-7-server-eus-optional-debug-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Supplementary
+    RPMs x86_64 6.7
+  repo: Red Hat Enterprise Linux 6 Server - Extended Update Support - Supplementary
+    (RPMs)
+  product_id: 10
+  reposet_id: 1670
+  repo_label: rhel-6-server-eus-supplementary-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - RH Common
+    Debug RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support - RH Common (Debug
+    RPMs)
+  product_id: 10
+  reposet_id: 4142
+  repo_label: rhel-7-server-eus-rh-common-debug-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Satellite Tools 6.2 for RHEL 6 Server - EUS RPMs x86_64 6.7
+  repo: Red Hat Satellite Tools 6.2 (for RHEL 6 Server - EUS) (RPMs)
+  product_id: 10
+  reposet_id: 4795
+  repo_label: rhel-6-server-eus-satellite-tools-6.2-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support RPMs x86_64
+    7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support (RPMs)
+  product_id: 10
+  reposet_id: 4117
+  repo_label: rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Satellite Tools 6.2 for RHEL 7 Server - EUS RPMs x86_64 7.2
+  repo: Red Hat Satellite Tools 6.2 (for RHEL 7 Server - EUS) (RPMs)
+  product_id: 10
+  reposet_id: 4834
+  repo_label: rhel-7-server-eus-satellite-tools-6.2-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Supplementary
+    Debug RPMs x86_64 6.7
+  repo: Red Hat Enterprise Linux 6 Server - Extended Update Support - Supplementary
+    (Debug RPMs)
+  product_id: 10
+  reposet_id: 684
+  repo_label: rhel-6-server-eus-supplementary-debuginfo
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Optional
+    Debug RPMs x86_64 6.7
+  repo: Red Hat Enterprise Linux 6 Server - Extended Update Support - Optional (Debug
+    RPMs)
+  product_id: 10
+  reposet_id: 1282
+  repo_label: rhel-6-server-eus-optional-debug-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server Kickstart x86_64 6.7
+  repo: Red Hat Enterprise Linux 6 Server (Kickstart)
+  repo_label: rhel-6-server-kickstart
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server Kickstart x86_64 6.9
+  repo: Red Hat Enterprise Linux 6 Server (Kickstart)
+  product_id: 17
+  reposet_id: 1952
+  repo_label: rhel-6-server-kickstart
+  basearch: x86_64
+  releasever: '6.9'
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server - Extras Debug RPMs x86_64
+  repo: Red Hat Enterprise Linux 6 Server - Extras (Debug RPMs)
+  product_id: 17
+  reposet_id: 3024
+  repo_label: rhel-6-server-extras-debuginfo
+  basearch: x86_64
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server - Extras Debug RPMs x86_64
+  repo: Red Hat Enterprise Linux 7 Server - Extras (Debug RPMs)
+  product_id: 17
+  reposet_id: 3028
+  repo_label: rhel-7-server-extras-debug-rpms
+  basearch: x86_64
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server - Supplementary Debug RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server - Supplementary (Debug RPMs)
+  product_id: 17
+  reposet_id: 2474
+  repo_label: rhel-7-server-supplementary-debug-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server - RH Common RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server - RH Common (RPMs)
+  product_id: 17
+  reposet_id: 2396
+  repo_label: rhel-6-server-rh-common-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server - Optional RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server - Optional (RPMs)
+  product_id: 17
+  reposet_id: 166
+  repo_label: rhel-6-server-optional-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server - Extras RPMs x86_64
+  repo: Red Hat Enterprise Linux 6 Server - Extras (RPMs)
+  product_id: 17
+  reposet_id: 3026
+  repo_label: rhel-6-server-extras-rpms
+  basearch: x86_64
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Satellite Tools 6.2 for RHEL 7 Server RPMs x86_64
+  repo: Red Hat Satellite Tools 6.2 (for RHEL 7 Server) (RPMs)
+  product_id: 17
+  reposet_id: 4831
+  repo_label: rhel-7-server-satellite-tools-6.2-rpms
+  basearch: x86_64
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Satellite Tools 6.2 for RHEL 6 Server RPMs x86_64
+  repo: Red Hat Satellite Tools 6.2 (for RHEL 6 Server) (RPMs)
+  product_id: 17
+  reposet_id: 4792
+  repo_label: rhel-6-server-satellite-tools-6.2-rpms
+  basearch: x86_64
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server - Optional RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server - Optional (RPMs)
+  product_id: 17
+  reposet_id: 2463
+  repo_label: rhel-7-server-optional-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server - Optional Debug RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server - Optional (Debug RPMs)
+  product_id: 17
+  reposet_id: 165
+  repo_label: rhel-6-server-optional-debug-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server (Kickstart)
+  product_id: 17
+  reposet_id: 2455
+  repo_label: rhel-7-server-kickstart
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.4
+  repo: Red Hat Enterprise Linux 7 Server (Kickstart)
+  product_id: 17
+  reposet_id: 2455
+  repo_label: rhel-7-server-kickstart
+  basearch: x86_64
+  releasever: '7.4'
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server (Kickstart)
+  product_id: 17
+  reposet_id: 2455
+  repo_label: rhel-7-server-kickstart
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.4
+  repo: Red Hat Enterprise Linux 7 Server (Kickstart)
+  product_id: 17
+  reposet_id: 2455
+  repo_label: rhel-7-server-kickstart
+  basearch: x86_64
+  releasever: '7.4'
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server (RPMs)
+  product_id: 17
+  reposet_id: 168
+  repo_label: rhel-6-server-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server - RH Common Debug RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server - RH Common (Debug RPMs)
+  product_id: 17
+  reposet_id: 2471
+  repo_label: rhel-7-server-rh-common-debug-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server - Supplementary RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server - Supplementary (RPMs)
+  product_id: 17
+  reposet_id: 1673
+  repo_label: rhel-6-server-supplementary-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server - Extras RPMs x86_64
+  repo: Red Hat Enterprise Linux 7 Server - Extras (RPMs)
+  product_id: 17
+  reposet_id: 3030
+  repo_label: rhel-7-server-extras-rpms
+  basearch: x86_64
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server Debug RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server (Debug RPMs)
+  product_id: 17
+  reposet_id: 2453
+  repo_label: rhel-7-server-debug-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server - Optional Debug RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server - Optional (Debug RPMs)
+  product_id: 17
+  reposet_id: 2462
+  repo_label: rhel-7-server-optional-debug-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server - RH Common RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server - RH Common (RPMs)
+  product_id: 17
+  reposet_id: 2472
+  repo_label: rhel-7-server-rh-common-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server - Supplementary Debug RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server - Supplementary (Debug RPMs)
+  product_id: 17
+  reposet_id: 679
+  repo_label: rhel-6-server-supplementary-debuginfo
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server (RPMs)
+  product_id: 17
+  reposet_id: 2456
+  repo_label: rhel-7-server-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server - RH Common Debug RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server - RH Common (Debug RPMs)
+  product_id: 17
+  reposet_id: 2395
+  repo_label: rhel-6-server-rh-common-debug-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 7 Server - Supplementary RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server - Supplementary (RPMs)
+  product_id: 17
+  reposet_id: 2476
+  repo_label: rhel-7-server-supplementary-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Enterprise Linux Server
+  repo_name: Red Hat Enterprise Linux 6 Server Debug RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server (Debug RPMs)
+  product_id: 17
+  reposet_id: 163
+  repo_label: rhel-6-server-debug-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Scalable File System for RHEL Server - Extended
+    Update Support
+  repo_name: Red Hat Enterprise Linux Scalable File System for RHEL 6 Server - Extended
+    Update Support RPMs x86_64 6.7
+  repo: Red Hat Enterprise Linux Scalable File System (for RHEL 6 Server) - Extended
+    Update Support (RPMs)
+  product_id: 14
+  reposet_id: 1361
+  repo_label: rhel-sfs-for-rhel-6-server-eus-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Scalable File System for RHEL Server - Extended
+    Update Support
+  repo_name: Red Hat Enterprise Linux Scalable File System for RHEL 6 Server - Extended
+    Update Support RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux Scalable File System (for RHEL 6 Server) - Extended
+    Update Support (RPMs)
+  product_id: 14
+  reposet_id: 1361
+  repo_label: rhel-sfs-for-rhel-6-server-eus-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Scalable File System for RHEL Server - Extended
+    Update Support
+  repo_name: Red Hat Enterprise Linux Scalable File System for RHEL 6 Server - Extended
+    Update Support RPMs x86_64 6.7
+  repo: Red Hat Enterprise Linux Scalable File System (for RHEL 6 Server) - Extended
+    Update Support (RPMs)
+  product_id: 14
+  reposet_id: 1361
+  repo_label: rhel-sfs-for-rhel-6-server-eus-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Scalable File System for RHEL Server - Extended
+    Update Support
+  repo_name: Red Hat Enterprise Linux Scalable File System for RHEL 6 Server - Extended
+    Update Support RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux Scalable File System (for RHEL 6 Server) - Extended
+    Update Support (RPMs)
+  product_id: 14
+  reposet_id: 1361
+  repo_label: rhel-sfs-for-rhel-6-server-eus-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.1
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.1'
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.3
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.3'
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.1
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.1'
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.3
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.3'
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.1
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.1'
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Red Hat Enterprise Linux Resilient Storage for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Resilient Storage for RHEL 7 Server - Extended
+    Update Support RPMs x86_64 7.3
+  repo: Red Hat Enterprise Linux Resilient Storage (for RHEL 7 Server) - Extended
+    Update Support (RPMs)
+  product_id: 1
+  reposet_id: 4177
+  repo_label: rhel-rs-for-rhel-7-server-eus-rpms
+  basearch: x86_64
+  releasever: '7.3'
+- product: Red Hat Enterprise Linux Load Balancer for RHEL Server - Extended Update
+    Support
+  repo_name: Red Hat Enterprise Linux Load Balancer for RHEL 6 Server - Extended Update
+    Support RPMs i386 6.7
+  repo: Red Hat Enterprise Linux Load Balancer (for RHEL 6 Server) - Extended Update
+    Support (RPMs)
+  product_id: 16
+  reposet_id: 1355
+  repo_label: rhel-lb-for-rhel-6-server-eus-rpms
+  basearch: i386
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Load Balancer for RHEL Server
+  repo_name: Red Hat Enterprise Linux Load Balancer for RHEL 6 Server RPMs x86_64
+    6Server
+  repo: Red Hat Enterprise Linux Load Balancer (for RHEL 6 Server) (RPMs)
+  product_id: 28
+  reposet_id: 367
+  repo_label: rhel-lb-for-rhel-6-server-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Enterprise Linux High Availability for RHEL Server
+  repo_name: Red Hat Enterprise Linux High Availability for RHEL 6 Server RPMs x86_64
+    6.7
+  repo: Red Hat Enterprise Linux High Availability (for RHEL 6 Server) (RPMs)
+  product_id: 26
+  reposet_id: 352
+  repo_label: rhel-ha-for-rhel-6-server-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Red Hat Enterprise Linux Fast Datapath
+  repo_name: Red Hat Enterprise Linux Fast Datapath RHEL 7 Server RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux Fast Datapath (RHEL 7 Server) (RPMs)
+  product_id: 31
+  reposet_id: 5226
+  repo_label: rhel-7-fast-datapath-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: Red Hat Developer Tools for RHEL Server
+  repo_name: Red Hat Developer Tools Debug RPMs for Red Hat Enterprise Linux 7 Server
+    x86_64
+  repo: Red Hat Developer Tools Debug RPMs for Red Hat Enterprise Linux 7 Server
+  product_id: 8
+  reposet_id: 6055
+  repo_label: rhel-7-server-devtools-debug-rpms
+  basearch: x86_64
+- product: Red Hat Developer Tools for RHEL Server
+  repo_name: Red Hat Developer Tools RPMs for Red Hat Enterprise Linux 7 Server x86_64
+  repo: Red Hat Developer Tools RPMs for Red Hat Enterprise Linux 7 Server
+  product_id: 8
+  reposet_id: 6054
+  repo_label: rhel-7-server-devtools-rpms
+  basearch: x86_64
+- product: Red Hat Developer Toolset for RHEL Server
+  repo_name: Red Hat Developer Toolset 2 RPMs for Red Hat Enterprise Linux 6 Server
+    x86_64 6Server
+  repo: Red Hat Developer Toolset 2 RPMs for Red Hat Enterprise Linux 6 Server
+  product_id: 22
+  reposet_id: 1979
+  repo_label: rhel-server-dts2-6-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Red Hat Developer Toolset for RHEL Server
+  repo_name: Red Hat Developer Toolset 2 Debug RPMs for Red Hat Enterprise Linux 6
+    Server x86_64 6Server
+  repo: Red Hat Developer Toolset 2 Debug RPMs for Red Hat Enterprise Linux 6 Server
+  product_id: 22
+  reposet_id: 1981
+  repo_label: rhel-server-dts2-6-debug-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Oracle Java for RHEL Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 7 Server - Extended Update Support - Oracle
+    Java RPMs x86_64 7.2
+  repo: Red Hat Enterprise Linux 7 Server - Extended Update Support - Oracle Java
+    (RPMs)
+  product_id: 11
+  reposet_id: 4140
+  repo_label: rhel-7-server-eus-thirdparty-oracle-java-rpms
+  basearch: x86_64
+  releasever: '7.2'
+- product: Oracle Java for RHEL Server - Extended Update Support
+  repo_name: Red Hat Enterprise Linux 6 Server - Extended Update Support - Oracle
+    Java RPMs x86_64 6.7
+  repo: Red Hat Enterprise Linux 6 Server - Extended Update Support - Oracle Java
+    (RPMs)
+  product_id: 11
+  reposet_id: 2740
+  repo_label: rhel-6-server-eus-thirdparty-oracle-java-rpms
+  basearch: x86_64
+  releasever: '6.7'
+- product: Oracle Java for RHEL Server
+  repo_name: Red Hat Enterprise Linux 6 Server - Oracle Java RPMs x86_64 6Server
+  repo: Red Hat Enterprise Linux 6 Server - Oracle Java (RPMs)
+  product_id: 15
+  reposet_id: 2699
+  repo_label: rhel-6-server-thirdparty-oracle-java-rpms
+  basearch: x86_64
+  releasever: 6Server
+- product: Oracle Java for RHEL Server
+  repo_name: Red Hat Enterprise Linux 7 Server - Oracle Java RPMs x86_64 7Server
+  repo: Red Hat Enterprise Linux 7 Server - Oracle Java (RPMs)
+  product_id: 15
+  reposet_id: 3254
+  repo_label: rhel-7-server-thirdparty-oracle-java-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: dotNET on RHEL for RHEL Server
+  repo_name: dotNET on RHEL Debug RPMs for Red Hat Enterprise Linux 7 Server x86_64
+    7Server
+  repo: dotNET on RHEL Debug RPMs for Red Hat Enterprise Linux 7 Server
+  product_id: 18
+  reposet_id: 4938
+  repo_label: rhel-7-server-dotnet-debug-rpms
+  basearch: x86_64
+  releasever: 7Server
+- product: dotNET on RHEL for RHEL Server
+  repo_name: dotNET on RHEL RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server
+  repo: dotNET on RHEL RPMs for Red Hat Enterprise Linux 7 Server
+  product_id: 18
+  reposet_id: 4937
+  repo_label: rhel-7-server-dotnet-rpms
+  basearch: x86_64
+  releasever: 7Server

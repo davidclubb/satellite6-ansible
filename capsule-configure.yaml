@@ -1,0 +1,38 @@
+---
+
+#  connection: local
+
+
+  - name: start configuration
+    debug: msg="start configuration"
+
+  - name: enable foreman remote execution plugin (might take a long time, sit down in the boat..)
+    command: satellite-installer --scenario capsule --enable-foreman-proxy-plugin-remote-execution-ssh
+    tags: rex
+
+  - name: assign capsule to organization {{ organization }}
+    command: hammer capsule update --name {{ ansible_fqdn }} --organizations {{ organization }}
+    delegate_to: "{{ satellite_hostname }}"
+
+  - name: assign capsule to location {{ hostvars.inventory_hostname.location }}
+    command: hammer capsule update --name {{ ansible_fqdn }} --locations {{ hostvars[inventory_hostname].location }}
+    delegate_to: "{{ satellite_hostname }}"
+
+  - name: debug LEs
+    debug:
+      msg: "{{ item }}"
+    with_items: "{{ hostvars[inventory_hostname].capsule_lifecycle_environments }}"
+
+  - name: assign lifecycle environments to capsule
+    command: hammer capsule content add-lifecycle-environment --name {{ ansible_fqdn }} --environment {{ item }} --organization {{ organization }}
+    with_items: "{{ hostvars[inventory_hostname].capsule_lifecycle_environments }}"
+#    ignore_errors: yes
+    delegate_to: "{{ satellite_hostname }}"
+
+  - name: start initial asynchronous sync (this will continue after playbook is done)
+    command: hammer capsule content synchronize --name {{ ansible_fqdn }} --async
+    delegate_to: "{{ satellite_hostname }}"
+
+
+
+
